@@ -103,8 +103,8 @@ func updateCarByID(w http.ResponseWriter, r *http.Request) {
 			vehicles = append(vehicles, updatedCar)
 		}
 	}
-	json.NewEncoder(w).Encode(vehicles)
 	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(vehicles)
 
 }
 
@@ -116,8 +116,8 @@ func createCarsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewDecoder(r.Body).Decode(&newCar)
 
 	vehicles = append(vehicles, newCar)
-	json.NewEncoder(w).Encode(vehicles)
 	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(vehicles)
 
 }
 
@@ -132,7 +132,7 @@ func deleteCarsHandler(w http.ResponseWriter, r *http.Request) {
 			vehicles = append(vehicles[:k], vehicles[k+1:]...)
 		}
 	}
-	json.NewEncoder(w).Encode(vehicles)
 	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(vehicles)
 
 }
