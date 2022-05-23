@@ -1,2 +1,8 @@
-# golang_rest
-CRUD REST API with Go
+# REST API with Go
+
+Simple CRUD backend with Golang Gorilla Mux
+
+Create --> POST
+Read --> GET
+Update --> PUT | PATCH
+Delete --> DELETE
