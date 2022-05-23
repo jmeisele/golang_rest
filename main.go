@@ -54,7 +54,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 func returnCars(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(vehicles)
-	
+
 }
 
 func returnCarsByBrand(w http.ResponseWriter, r *http.Request) {
@@ -69,7 +69,7 @@ func returnCarsByBrand(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(cars)
-	
+
 }
 
 func returnCarByID(w http.ResponseWriter, r *http.Request) {
@@ -84,14 +84,14 @@ func returnCarByID(w http.ResponseWriter, r *http.Request) {
 			json.NewEncoder(w).Encode(car)
 		}
 	}
-	
+
 }
 
 func updateCarByID(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	carID, err := strconv.Atoi(vars["id"])
 	if err != nil {
-		fmt.Println("Unable to convert int to string", err)\
+		fmt.Println("Unable to convert int to string", err)
 	}
 	var updatedCar Vehicle
 	json.NewDecoder(r.Body).Decode(&updatedCar)
@@ -109,9 +109,9 @@ func updateCarByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func createCarsHandler(w http.ResponseWriter, r *http.Request) {
-	// Creating an empty newCar variable of type Vehicle 
+	// Creating an empty newCar variable of type Vehicle
 	var newCar Vehicle
-	
+
 	// Decoding the incoming body and assigning to newCar
 	json.NewDecoder(r.Body).Decode(&newCar)
 
