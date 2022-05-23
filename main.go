@@ -88,6 +88,22 @@ func returnCarByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func updateCarByID(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	carID, err := strconv.Atoi(vars["id"])
+	if err != nil {
+		fmt.Println("Unable to convert int to string", err)\
+	}
+	var updatedCar Vehicle
+	json.NewDecoder(r.Body).Decode(&updatedCar)
+	for k, v := range vehicles {
+		if v.ID == carID {
+			// Remove one vehicle
+			vehicles = append(vehicles[:k], vehicles[k+1:]...)
+			// Add the new updated car
+			vehicles = append(vehicles, updatedCar)
+		}
+	}
+	json.NewEncoder(w).Encode(vehicles)
 	w.WriteHeader(http.StatusOK)
 
 }
@@ -100,8 +116,8 @@ func createCarsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewDecoder(r.Body).Decode(&newCar)
 
 	vehicles = append(vehicles, newCar)
-	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(vehicles)
+	w.WriteHeader(http.StatusOK)
 
 }
 
@@ -116,7 +132,7 @@ func deleteCarsHandler(w http.ResponseWriter, r *http.Request) {
 			vehicles = append(vehicles[:k], vehicles[k+1:]...)
 		}
 	}
-	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(vehicles)
+	w.WriteHeader(http.StatusOK)
 
 }
