@@ -1,6 +1,6 @@
 # REST API with Go
 
-Simple CRUD backend with Golang Gorilla Mux
+Learning the Gorilla Mux package by building a simple CRUD Webserver.
 
 Create --> POST
 Read --> GET

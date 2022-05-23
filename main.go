@@ -27,7 +27,7 @@ var vehicles = []Vehicle{
 func main() {
 	fmt.Println("Booting up webserver")
 
-	// Set up our routes
+	// Set up our routes with callback functions
 	r := mux.NewRouter().StrictSlash(true)
 	r.HandleFunc("/", homeHandler).Methods("GET")
 	r.HandleFunc("/cars", returnCars).Methods("GET")
