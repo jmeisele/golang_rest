@@ -54,7 +54,6 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 func returnCars(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(vehicles)
-
 }
 
 func returnCarsByBrand(w http.ResponseWriter, r *http.Request) {
@@ -69,7 +68,6 @@ func returnCarsByBrand(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(cars)
-
 }
 
 func returnCarByID(w http.ResponseWriter, r *http.Request) {
@@ -84,7 +82,6 @@ func returnCarByID(w http.ResponseWriter, r *http.Request) {
 			json.NewEncoder(w).Encode(car)
 		}
 	}
-
 }
 
 func updateCarByID(w http.ResponseWriter, r *http.Request) {
@@ -105,7 +102,6 @@ func updateCarByID(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(vehicles)
-
 }
 
 func createCarsHandler(w http.ResponseWriter, r *http.Request) {
@@ -118,7 +114,6 @@ func createCarsHandler(w http.ResponseWriter, r *http.Request) {
 	vehicles = append(vehicles, newCar)
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(vehicles)
-
 }
 
 func deleteCarsHandler(w http.ResponseWriter, r *http.Request) {
@@ -134,5 +129,4 @@ func deleteCarsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(vehicles)
-
 }
